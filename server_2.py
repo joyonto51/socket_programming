@@ -2,13 +2,18 @@ import socket
 import pickle
 
 a = 10
+self_ip_address = "127.0.0.1"
+server_ip_address = "127.0.0.1"
+s1_port = 3466
+c1_port = 3467
+
 s1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s1.bind((socket.gethostname(), 2247))
+s1.bind((self_ip_address, s1_port))
 s1.listen(5)
 
 def get_response():
     c1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    c1.connect((socket.gethostname(), 2248))
+    c1.connect((server_ip_address, c1_port))
 
     return c1
 
